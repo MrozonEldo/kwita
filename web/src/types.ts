@@ -30,3 +30,10 @@ interface Expense {
     /** Users for splitting the bill, if undefined then for all */
     for?: Array<User>;
 }
+
+interface Context {
+    user: User;
+    users: Array<User>;
+    expenses: Array<Expense>;
+    expenseCategories: Array<ExpenseCategory>;
+}

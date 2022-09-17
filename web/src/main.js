@@ -1,5 +1,4 @@
 import './app.css'
-import './initialize.ts'
 import './helpers.ts'
 import App from './App.svelte'
 
