@@ -22,7 +22,7 @@ interface ExpenseCategory {
 
 interface Expense {
     id: UUID;
-    date: Date;
+    date?: Date;
     amount: SMU;
     payer: User;
     title: string;

@@ -1,6 +1,6 @@
 import './types'
 
-let users: Array<User> = [
+export var users: Array<User> = [
     {
         id: "679e4ddf-684f-4369-8f7b-b1db9e2976b8",
         name: "smalec"
@@ -15,23 +15,24 @@ let users: Array<User> = [
     }
 ];
 
+export var expenseCategories: Array<ExpenseCategory>=[
+    {
+        id: "d127d779-055e-47d4-bf3b-aeda01d79c62",
+        name: "Najm i czynsz"
+    },
+    {
+        id: "8d605a7b-eb1c-4ddd-b8ad-984a0806f640",
+        name: "Zakupy"
+    },
+    {
+        id: "16afbf69-ee08-429f-98f2-05b54aedb20e",
+        name: "Inne"
+    }
+];
+
 export var context: Context = {
     users: users,
     user: users[0],
-    expenseCategories:[
-        {
-            id: "d127d779-055e-47d4-bf3b-aeda01d79c62",
-            name: "Najm i czynsz"
-        },
-        {
-            id: "8d605a7b-eb1c-4ddd-b8ad-984a0806f640",
-            name: "Zakupy"
-        },
-        {
-            id: "16afbf69-ee08-429f-98f2-05b54aedb20e",
-            name: "Inne"
-        }
-    ],
-
+    expenseCategories: expenseCategories,
     expenses: []
 }
