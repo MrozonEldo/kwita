@@ -2,11 +2,14 @@
     import {users} from '../context'
     import {expenseCategories} from '../context'
 
+    export var testa =[];
     function Add(){
+        testa=testa.concat({id:1,name:"tomek"});
+        console.log(testa);
     }
 </script>
 
-<div class="box"> 
+<div class="add_expense"> 
     Kto:
     <select id="users">
         {#each users as user}
@@ -24,17 +27,24 @@
         {/each}
     </select>
     <br><br>
-    <input type="button" value="+" class="add_button">
+    <input type="button" value="+" class="add_button" on:click={Add}>
 </div>
 
+{#each testa as a}
+    <div class="exist_expense">{a.id} imie: {a.name}</div>
+{/each}
 
 <style>
-    .box{
+    .add_expense{
         padding:30px;
         border:solid black 1px;
     }
     .add_button{
         font-size:150%;
 
+    }
+    .exist_expense{
+        padding:30px;
+        border:solid black 1px;
     }
 </style>

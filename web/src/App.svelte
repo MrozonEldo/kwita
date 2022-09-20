@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AddExpense from './lib/AddExpense.svelte'
+  import Expense from './lib/Expense.svelte'
   import { formatMoney } from './helpers'
   console.log(formatMoney(1234));
 </script>
@@ -13,8 +13,9 @@
   <h1>Kwita jo</h1>
 
   <div class="card">
-    <AddExpense/>
+    <Expense/>
   </div>
+  
 </main>
 
 <style>
