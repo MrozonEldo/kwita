@@ -1,11 +1,18 @@
 <script>
+    import { identity } from 'svelte/internal';
     import {users} from '../context'
     import {expenseCategories} from '../context'
 
-    export var testa =[];
+    var receipts =[];
+    let count=0;
     function Add(){
-        testa=testa.concat({id:1,name:"tomek"});
-        console.log(testa);
+        receipts=receipts.concat({id:count,name:"tomek",notExist:false});
+        count++;
+        console.log(receipts);
+    }
+    function Delete(){
+        receipts=receipts.filter(r => !r.exist);
+        console.log(receipts);
     }
 </script>
 
@@ -30,9 +37,16 @@
     <input type="button" value="+" class="add_button" on:click={Add}>
 </div>
 
-{#each testa as a}
-    <div class="exist_expense">{a.id} imie: {a.name}</div>
+{#each receipts as a}
+    <div class="exist_expense">
+        {a.id} <br/>
+        imie: {a.name} <br/>
+        <input type=checkbox bind:checked={a.exist}>
+    </div>
 {/each}
+
+<br/>
+<input type="button" value="-" class="add_button" on:click={Delete}>
 
 <style>
     .add_expense{
