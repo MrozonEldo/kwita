@@ -2,7 +2,7 @@
     import {context} from '../context'
 
     let counter=0;
-    let expensesArray =  [
+    context.expenses =  [
     {
             id: crypto.randomUUID(),
             amount:null,
@@ -10,7 +10,7 @@
             title:null
     }];
     function Add(){
-        expensesArray=expensesArray.concat(
+        context.expenses=context.expenses.concat(
             {
                 id:crypto.randomUUID(),
                 amount:null,
@@ -20,23 +20,23 @@
         );
         
         counter++;
-        console.log(expensesArray);
+        console.log(context.expenses);
     }
 </script>
 
 <div class="box"> 
     Kto:
-    <select id="users" bind:value={expensesArray[counter].payer}>
+    <select id="users" bind:value={context.expenses[counter].payer}>
         {#each context.users as user}
             <option value={user.name} id="user_name">{user.name}</option>
         {/each}
     </select>
     <br/>
     Ile:
-    <input type="text" bind:value={expensesArray[counter].amount}>
+    <input type="text" bind:value={context.expenses[counter].amount}>
     <br>
     Rodzaj rachunku:
-    <select id="categories" bind:value={expensesArray[counter].title}>
+    <select id="categories" bind:value={context.expenses[counter].title}>
         {#each context.expenseCategories as category}
             <option value={category.name} id="category_name">{category.name}</option>
         {/each}

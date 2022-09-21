@@ -1,7 +1,8 @@
 <script lang="ts">
   import AddExpenseCard from './lib/AddExpenseCard.svelte'
-  import { formatMoney } from './helpers'
-  console.log(formatMoney(1234));
+  import ExpenseCard from './lib/ExpenseCard.svelte';
+  import { context } from './context';
+
 </script>
 
 <main>
@@ -15,7 +16,12 @@
   <div class="card">
     <AddExpenseCard/>
   </div>
-  
+    {#each context.expenses as t}
+      <ExpenseCard {...t}/>
+    {/each}
+  <div>
+    
+  </div>
 </main>
 
 <style>
