@@ -1,6 +1,7 @@
-import './types'
+import * as kwita from './types'
+import { writable } from 'svelte/store';
 
-var users: Array<User> = [
+let initialUsers: Array<kwita.User> =  [
     {
         id: "679e4ddf-684f-4369-8f7b-b1db9e2976b8",
         name: "smalec"
@@ -13,9 +14,11 @@ var users: Array<User> = [
         id: "ad9819ea-9fef-44c3-8d8a-bb680f61b9d7",
         name: "kuba"
     }
-];
+]
 
-var expenseCategories: Array<ExpenseCategory>=[
+
+
+let defaultExpenseCategories: Array<kwita.ExpenseCategory>=[
     {
         id: "d127d779-055e-47d4-bf3b-aeda01d79c62",
         name: "Najm i czynsz"
@@ -30,9 +33,8 @@ var expenseCategories: Array<ExpenseCategory>=[
     }
 ];
 
-export var context: Context = {
-    users: users,
-    user: users[0],
-    expenseCategories: expenseCategories,
-    expenses: []
-}
+export const users = writable(initialUsers);
+export const expenseCategories = writable(defaultExpenseCategories);
+
+export const user = writable(initialUsers[0]);
+export const expenses = writable(new Array<kwita.Expense>);

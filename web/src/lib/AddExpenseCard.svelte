@@ -1,44 +1,40 @@
-<script>
-    import {context} from '../context'
+<script lang='ts'>
+    import * as kwita from '../types';
+    
+    import { expenses, user, users, expenseCategories }  from '../context';
+
+
+    let amountDecimal: number = null;
+    let title: string;
+    let category: kwita.ExpenseCategory;
 
     let counter=0;
-    context.expenses =  [
-    {
-            id: crypto.randomUUID(),
-            amount:null,
-            payer:null,
-            title:null
-    }];
     function Add(){
-        context.expenses=context.expenses.concat(
-            {
-                id:crypto.randomUUID(),
-                amount:null,
-                payer:null,
-                title:null
-            }
-        );
+        let newExpense: kwita.Expense = {
+            id: crypto.randomUUID(),
+            amount: amountDecimal*100,
+            payer: $user,
+            title: title
+        }
+
+        $expenses = [newExpense, ...$expenses]
         
-        counter++;
-        console.log(context.expenses);
+        console.log($expenses);
     }
 </script>
 
 <div class="box"> 
-    Kto:
-    <select id="users" bind:value={context.expenses[counter].payer}>
-        {#each context.users as user}
-            <option value={user.name} id="user_name">{user.name}</option>
-        {/each}
-    </select>
-    <br/>
+
     Ile:
-    <input type="text" bind:value={context.expenses[counter].amount}>
+    <input type="number" bind:value={amountDecimal}>
+    <br>
+    Tytuł:
+    <input type="text" bind:value={title}>
     <br>
     Rodzaj rachunku:
-    <select id="categories" bind:value={context.expenses[counter].title}>
-        {#each context.expenseCategories as category}
-            <option value={category.name} id="category_name">{category.name}</option>
+    <select id="categories" bind:value={category}>
+        {#each $expenseCategories as c}
+            <option value={c}>{c.name}</option>
         {/each}
     </select>
     <br><br>

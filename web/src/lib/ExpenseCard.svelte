@@ -1,12 +1,11 @@
 <script>
     //export let id;
-    export let amount;
-    export let payer;
-    export let title;    
+    import { formatMoney } from '../helpers';
+    export let expense;   
 </script>
 
 <div class="expense_card">
-    <p>Hej {payer}! Chcę ci powiedzieć, że zapłaciłeś {amount} zł za {title}. Spoko ok?</p>
+    <p>Hej {expense.payer.name}! Chcę ci powiedzieć, że zapłaciłeś {formatMoney(expense.amount)} za {expense.title}. Spoko ok?</p>
 </div>
 
 <style>

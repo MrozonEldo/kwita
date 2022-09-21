@@ -1,4 +1,4 @@
-import './types'
+import * as kwita from './types'
 
 let currencyFormater = new Intl.NumberFormat(
     "pl-PL",
@@ -8,6 +8,6 @@ let currencyFormater = new Intl.NumberFormat(
     }
     );
 
-export function formatMoney(amount: SMU): string {
+export function formatMoney(amount: kwita.SMU): string {
     return currencyFormater.format(amount/100)
 }
