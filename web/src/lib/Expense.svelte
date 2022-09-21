@@ -1,7 +1,6 @@
 <script>
     import { identity } from 'svelte/internal';
-    import {users} from '../context'
-    import {expenseCategories} from '../context'
+    import { context } from '../context'
 
     var receipts =[];
     let count=0;

@@ -1,6 +1,6 @@
 import './types'
 
-export var users: Array<User> = [
+var users: Array<User> = [
     {
         id: "679e4ddf-684f-4369-8f7b-b1db9e2976b8",
         name: "smalec"
@@ -15,7 +15,7 @@ export var users: Array<User> = [
     }
 ];
 
-export var expenseCategories: Array<ExpenseCategory>=[
+var expenseCategories: Array<ExpenseCategory>=[
     {
         id: "d127d779-055e-47d4-bf3b-aeda01d79c62",
         name: "Najm i czynsz"
