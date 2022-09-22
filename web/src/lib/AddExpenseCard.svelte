@@ -1,5 +1,5 @@
 <script lang='ts'>
-    import * as kwita from '../types';
+    import type * as kwita from '../types';
     
     import { expenses, user, users, expenseCategories }  from '../context';
 

@@ -1,7 +1,8 @@
 <script>
     //export let id;
     import { formatMoney } from '../helpers';
-    export let expense;   
+    export let expense;
+
 </script>
 
 <div class="expense_card">

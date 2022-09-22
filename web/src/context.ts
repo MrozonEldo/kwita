@@ -1,4 +1,4 @@
-import * as kwita from './types'
+import type * as kwita from './types'
 import { writable } from 'svelte/store';
 
 let initialUsers: Array<kwita.User> =  [
