@@ -1,19 +1,19 @@
 <script>
     //export let id;
     import { formatMoney } from '../helpers';
+    import { expenses } from '../context';
     export let expense;
 
-    function Delete(id){
-        const valueToRemove = Object.values(id);
-        console.log(valueToRemove[0]);
-        expense=expense.filter(item => item.id !== valueToRemove[0]);
-        console.log(expense);
+    function Delete(e){
+        console.log(e);
+        $expenses=$expenses.filter(item => item.id !== e);
+        console.log(expenses);
     }
 </script>
 
 <div class="expense_card">
     <p>Hej {expense.payer.name}! Chcę ci powiedzieć, że zapłaciłeś {formatMoney(expense.amount)} za {expense.title}. Spoko ok?</p>
-    <input type="button" value="USUŃ" on:click={()=>Delete(expense)}>
+    <input type="button" value="USUŃ" on:click={()=>Delete(expense.id)}>
 </div>
 
 <style>
