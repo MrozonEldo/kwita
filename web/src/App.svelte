@@ -1,47 +1,35 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
-  import { formatMoney } from './helpers'
-  console.log(formatMoney(1234));
+  import AddExpenseCard from './lib/AddExpenseCard.svelte'
+  import ExpenseCard from './lib/ExpenseCard.svelte';
+  import { expenses }  from './context';
+
 </script>
 
 <main>
   <div>
-    <a href="https://vitejs.dev" target="_blank"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
+    <a href="https://github.com/k144/kwita" target="_blank"> 
+      <img src="src/assets/k.png" alt="Kwita Logo" class="logo"/>
     </a>
   </div>
-  <h1>Vite + Svelte</h1>
+  <h1>Kwita jo</h1>
 
   <div class="card">
-    <Counter />
+    <AddExpenseCard/>
   </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+    {#each $expenses as expense}
+      <ExpenseCard {expense}/>
+    {/each}
+  <div>
+    
+  </div>
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
+  .logo{
+    height: 100px;
+    width: 100px;
   }
   .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
   }
 </style>
