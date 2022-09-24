@@ -7,13 +7,14 @@
     let amountDecimal: number;
     let title: string;
     let category: ExpenseCategory;
+    let payer = $user;
 
     function Add(){
         let newExpense: Expense = {
             id: crypto.randomUUID(),
             date: new Date(),
             amount: amountDecimal*100,
-            payer: $user,
+            payer: payer,
             title: title
         }
 
@@ -24,6 +25,12 @@
 
 <div class="box"> 
     <form on:submit|preventDefault={Add}>
+        Kto:
+        <select class="users" bind:value={payer} required>
+            {#each $users as u}
+                <option value={u}>{u.name}</option>
+            {/each}
+        </select>
         Ile:
         <input
             type="number"
