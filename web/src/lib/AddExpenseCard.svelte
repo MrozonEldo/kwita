@@ -8,7 +8,6 @@
     let title: string;
     let category: kwita.ExpenseCategory;
 
-    let counter=0;
     function Add(){
         let newExpense: kwita.Expense = {
             id: crypto.randomUUID(),
@@ -18,8 +17,6 @@
         }
 
         $expenses = [newExpense, ...$expenses]
-        
-        console.log($expenses);
     }
 </script>
 
