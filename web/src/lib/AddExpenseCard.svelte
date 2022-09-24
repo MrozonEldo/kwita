@@ -1,15 +1,15 @@
 <script lang='ts'>
-    import type * as kwita from '../types';
+    import type { Expense, ExpenseCategory } from '../types';
     
     import { expenses, user, users, expenseCategories }  from '../context';
 
 
     let amountDecimal: number;
     let title: string;
-    let category: kwita.ExpenseCategory;
+    let category: ExpenseCategory;
 
     function Add(){
-        let newExpense: kwita.Expense = {
+        let newExpense: Expense = {
             id: crypto.randomUUID(),
             date: new Date(),
             amount: amountDecimal*100,
@@ -25,7 +25,12 @@
 <div class="box"> 
     <form on:submit|preventDefault={Add}>
         Ile:
-        <input type="number" bind:value={amountDecimal} required>
+        <input
+            type="number"
+            bind:value={amountDecimal}
+            step=0.01
+            on:input={() => amountDecimal = Math.round(amountDecimal * 100) / 100}
+            required>
         <br>
         Tytuł:
         <input type="text" bind:value={title} required>

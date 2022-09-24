@@ -1,7 +1,7 @@
-import type * as kwita from './types'
+import type { User, Expense, ExpenseCategory } from './types'
 import { writable } from 'svelte/store';
 
-let initialUsers: Array<kwita.User> =  [
+let initialUsers: Array<User> =  [
     {
         id: "679e4ddf-684f-4369-8f7b-b1db9e2976b8",
         name: "smalec"
@@ -18,7 +18,7 @@ let initialUsers: Array<kwita.User> =  [
 
 
 
-let defaultExpenseCategories: Array<kwita.ExpenseCategory>=[
+let defaultExpenseCategories: Array<ExpenseCategory>=[
     {
         id: "d127d779-055e-47d4-bf3b-aeda01d79c62",
         name: "Najm i czynsz"
@@ -37,4 +37,4 @@ export const users = writable(initialUsers);
 export const expenseCategories = writable(defaultExpenseCategories);
 
 export const user = writable(initialUsers[0]);
-export const expenses = writable(new Array<kwita.Expense>);
+export const expenses = writable(new Array<Expense>);

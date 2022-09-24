@@ -35,5 +35,3 @@ export interface Expense {
     /** Users for splitting the bill, if undefined then for all */
     for?: Array<User>;
 }
-
-export {};
