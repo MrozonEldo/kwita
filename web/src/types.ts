@@ -27,7 +27,7 @@ export interface ExpenseCategory {
 
 export interface Expense {
     id: UUID;
-    date?: Date;
+    date: Date;
     amount: SMU;
     payer: User;
     title: string;
