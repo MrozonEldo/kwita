@@ -16,9 +16,12 @@
             amount: amountDecimal*100,
             payer: payer,
             title: title
-        }
+        };
 
-        $expenses = [newExpense, ...$expenses]
+        $expenses = [newExpense, ...$expenses];
+
+        amountDecimal = null;
+        title = null;
     }
 </script>
 

@@ -2,7 +2,6 @@
     import { users, expenses } from '../context'
     import { formatMoney } from '../helpers';
 
-    let totalsOfExpenses=$expenses;
 </script>
 
         {#each $users as u}
@@ -12,8 +11,9 @@
                 Liczba rachunków: { $expenses.filter(e => e.payer.id == u.id).length }
                 <br>
                 Suma: {
-                    totalsOfExpenses=$expenses.filter(e => e.payer.id == u.id),
-                    formatMoney(totalsOfExpenses.reduce((a,b) => a + b.amount,0))
+                    formatMoney($expenses
+                        .filter(e => e.payer.id == u.id)
+                        .reduce((a, b) => a + b.amount, 0))
                 }
             </div>
         {/each}
