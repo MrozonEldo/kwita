@@ -19,7 +19,6 @@
         }
 
         $expenses = [newExpense, ...$expenses]
-        
     }
 </script>
 
