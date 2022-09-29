@@ -5,7 +5,7 @@
     function oblicz(){
 
         let totalOfExpenses = [];
-        let mean = $expenses.reduce((a, b) => a + b.amount, 0)/3;
+        let mean = $expenses.reduce((a, b) => a + b.amount, 0) / $users.length;
         for (let user of $users) {
             totalOfExpenses.push({
                 user: user,
@@ -20,27 +20,21 @@
         }
         totalOfExpenses.sort((a,b) => b.balance - a.balance);
 
-        while(totalOfExpenses.length != 0){
+        while(totalOfExpenses.length >= 2){
             
-            totalOfExpenses=totalOfExpenses.filter(e => e.balance !==0);
-
-           if(totalOfExpenses[0].balance > Math.abs(totalOfExpenses[totalOfExpenses.length-1].balance)){
-
-                console.log(totalOfExpenses[0].user.name + ' | ' + formatMoney(Math.abs(totalOfExpenses[totalOfExpenses.length-1].balance)) + ' => ' + totalOfExpenses[totalOfExpenses.length-1].user.name);
-
-                totalOfExpenses[0].balance += (totalOfExpenses[totalOfExpenses.length-1].balance);
-
-                totalOfExpenses[totalOfExpenses.length-1].balance=0;
+            let min = totalOfExpenses[totalOfExpenses.length-1];
+            let max = totalOfExpenses[0];
+    
+            if (max.balance > Math.abs(min.balance)) {
+                console.log(max.user.name + ' | ' + formatMoney(Math.abs(min.balance)) + ' => ' + min.user.name);
+                max.balance += min.balance;
+                min.balance = 0;
+            } else {
+                console.log(max.user.name + ' | ' + formatMoney(max.balance) + ' => ' + min.user.name);
+                min.balance += max.balance;
+                max.balance = 0;
             }
-
-            else if(totalOfExpenses[0].balance <= Math.abs(totalOfExpenses[totalOfExpenses.length-1].balance)){
-
-                console.log(totalOfExpenses[0].user.name + ' | ' + formatMoney(totalOfExpenses[0].balance) + ' => ' + totalOfExpenses[totalOfExpenses.length-1].user.name);
-
-                totalOfExpenses[totalOfExpenses.length-1].balance += totalOfExpenses[0].balance;
-
-                totalOfExpenses[0].balance=0;
-            }
+            totalOfExpenses = totalOfExpenses.filter(e => e.balance !== 0);
 
         }
         
